@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+@import "tw-animate-css";
+
+:root {
+  /* Defaulting to Midnight Cyber Theme */
+  --background: oklch(0.12 0.02 240); /* Deep Midnight Blue */
+  --foreground: oklch(0.98 0.01 240);
+  
+  --primary: oklch(0.62 0.25 20); /* Neon Red / Cyber Red */
+  --secondary: oklch(0.72 0.22 150); /* Emerald / Cyber Green */
+  
+  --card: oklch(0.16 0.03 240 / 0.5);
+  --border: oklch(1 0 0 / 0.1);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: "Roboto", sans-serif;
+  --font-display: "Orbitron", sans-serif; /* For the 'WishSphere' Title */
+  --font-mono: "JetBrains Mono", monospace; /* For Coordinates & Telemetry */
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-border: var(--border);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    /* Cyber Grid + Radial Glows */
+    background-image: 
+      linear-gradient(to right, oklch(1 0 0 / 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.02) 1px, transparent 1px),
+      radial-gradient(circle at 50% -20%, oklch(0.62 0.25 20 / 0.1), transparent),
+      radial-gradient(circle at 0% 100%, oklch(0.72 0.22 150 / 0.05), transparent);
+    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+  }
+}
+
+/* Utilities for that High-Tech Look */
+.glass-panel {
+  @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
+}
+
+.neon-border-red {
+  @apply border-primary/50 shadow-[0_0_15px_rgba(255,50,50,0.3)];
+}
+
+.text-glow-red {
+  text-shadow: 0 0 10px oklch(0.62 0.25 20 / 0.8);
+}
+
+.panel {
+  @apply h-[90vh]
+}
